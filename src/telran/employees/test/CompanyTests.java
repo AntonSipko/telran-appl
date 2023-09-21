@@ -25,14 +25,6 @@ class CompanyTests {
         company = new CompanyImpl();
     }
 
-    @AfterEach
-    void tearDown() {
-        File file = new File(TEST_FILE_NAME);
-        if (file.exists()) {
-            file.delete();
-        }
-    }
-
     @Test
     void testAddEmployee() {
         Employee employee = new Employee(1, "John Doe","Marketing", 1000,LocalDate.of(1997, 8, 24));
