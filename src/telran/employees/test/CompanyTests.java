@@ -27,7 +27,6 @@ class CompanyTests {
 
     @AfterEach
     void tearDown() {
-        // Clean up after each test, remove the test data file if it exists
         File file = new File(TEST_FILE_NAME);
         if (file.exists()) {
             file.delete();
@@ -71,14 +70,12 @@ class CompanyTests {
     @Test
     @Order(2)
     void testRestore() throws Exception {
-        // Create test data in a file
         Employee employee1 = new Employee(1, "John Doe", null, 1000, LocalDate.of(1997, 8, 24));
         Employee employee2 = new Employee(2, "Jane Smith", null, 1500, LocalDate.of(1997, 8, 24));
         company.addEmployee(employee1);
         company.addEmployee(employee2);
         company.save(TEST_FILE_NAME);
 
-        // Clear current data and restore from the file
         company.getEmployees().clear();
         company.restore(TEST_FILE_NAME);
 
@@ -95,7 +92,6 @@ class CompanyTests {
 
         company.save(TEST_FILE_NAME);
 
-        // Verify that the file exists
         File file = new File(TEST_FILE_NAME);
         assertTrue(file.exists());
     }
